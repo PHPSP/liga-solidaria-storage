@@ -12,7 +12,7 @@ define('CONFIG_DIR', __DIR__ . '/config');
 define('WEB_DIR', __DIR__ . '/public');
 
 // Configuration file
-$c = new Container(CONFIG_DIR . '/config.ini.dist');
+$c = new Container(CONFIG_DIR . '/config.ini');
 
 // Set enviroment
 $isDevMode = ($c->env !== 'dev') ? false : true;
