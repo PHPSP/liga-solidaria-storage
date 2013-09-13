@@ -1,0 +1,21 @@
+;
+; Sample config file.
+; Copy or rename to config.ini
+;
+
+env                 = dev
+timezone            = America/Sao_Paulo
+default_charset     = 'UTF-8'
+
+db_driver           = "mysql"
+db_host             = "localhost"
+db_name             = "my_database"
+db_user             = "my_user"
+db_pass             = "my_pass"
+db_dsn              = "[db_driver]:host=[db_host];dbname=[db_name]"
+
+[pdo PDO]
+__construct         = [[db_dsn], [db_user], [db_pass]]
+
+[mapper Respect\Relational\Mapper]
+db                  = [pdo]

@@ -1,0 +1,13 @@
+# General files
+
+.buildpath
+.project
+.settings/
+.DS_Store
+*~
+/vendor/*
+
+# Project Files
+
+config/config.ini
+tests/_reports/*
