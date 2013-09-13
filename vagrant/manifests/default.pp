@@ -40,7 +40,7 @@ apache::vhost { 'liga-solidaria-storage.localhost':
   server_name   => 'liga-solidaria-storage.localhost',
   serveraliases => [
 ],
-  docroot       => '/var/www/',
+  docroot       => '/var/www/public/',
   port          => '80',
   env_variables => [
     'APP_ENV dev'
