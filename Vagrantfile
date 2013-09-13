@@ -24,4 +24,6 @@ Vagrant.configure("2") do |config|
     puppet.module_path = "vagrant/modules"
     puppet.options = ['--verbose']
   end
+
+  config.vm.provision :shell, :inline => 'sudo a2dissite default && sudo service apache2 reload'
 end
