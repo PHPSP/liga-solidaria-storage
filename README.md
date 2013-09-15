@@ -1,6 +1,8 @@
 Projeto de Storage para a Liga Solidária
 =========================================
 
+[![Scrutinizer Quality Score](https://scrutinizer-ci.com/g/PHPSP/liga-solidaria-storage/badges/quality-score.png?s=f5ab0022f6c90df4cdfe06f9d6545389ecd773ed)](https://scrutinizer-ci.com/g/PHPSP/liga-solidaria-storage/) | 
+[![Code Coverage](https://scrutinizer-ci.com/g/PHPSP/liga-solidaria-storage/badges/coverage.png?s=fc23860696f27656d7dc970df8481a86aa974155)](https://scrutinizer-ci.com/g/PHPSP/liga-solidaria-storage/) | 
 master: [![Build Status](https://travis-ci.org/PHPSP/liga-solidaria-storage.png?branch=master)](https://travis-ci.org/PHPSP/liga-solidaria-storage) | 
 develop: [![Build Status](https://travis-ci.org/PHPSP/liga-solidaria-storage.png?branch=develop)](https://travis-ci.org/PHPSP/liga-solidaria-storage)
 
