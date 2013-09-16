@@ -3,7 +3,8 @@ filter:
     paths: [bootstrap.php, src/*, tests/*]
 
 before_commands:
-    - "composer install --prefer-source"
+    - "composer install --prefer-source --verbose"
+    - "cp config/config.ini.dist config/config.ini"
 
 tools:
     php_cpd:
