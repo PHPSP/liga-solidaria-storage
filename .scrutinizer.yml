@@ -1,6 +1,6 @@
 filter:
     excluded_paths: [config/*, public/*, vagrant/*, vendor/*]
-    paths: [bootstrap.php, src/*, tests/*]
+    paths: [src/*, tests/*]
 
 before_commands:
     - "composer install --prefer-source --verbose"
