@@ -1,0 +1,33 @@
+filter:
+    excluded_paths: [config/*, public/*, vagrant/*, vendor/*]
+    paths: [bootstrap.php, src/*, tests/*]
+
+before_commands:
+    - "composer install --prefer-source"
+
+tools:
+    php_cpd:
+        excluded_dirs: [config/*, public/*, vagrant/*, vendor/*]
+        names:
+            - bootstrap.php
+            - src/*
+            - tests/*
+    php_code_coverage: true
+    php_pdepend:
+        excluded_dirs: [config/*, public/*, vagrant/*, vendor/*]
+    php_code_sniffer:
+        config:
+            standard: Zend
+    php_loc:
+        enabled: false
+        excluded_dirs: [config/*, public/*, vagrant/*, vendor/*]
+    php_mess_detector:
+        config:
+            rulesets:
+                - cleancode
+                - codesize
+                - controversial
+                - design
+                - naming
+                - unusedcode
+    php_analyzer: true
