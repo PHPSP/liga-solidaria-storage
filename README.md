@@ -6,6 +6,8 @@ Projeto de Storage para a Liga Solidária
 master: [![Build Status](https://travis-ci.org/PHPSP/liga-solidaria-storage.png?branch=master)](https://travis-ci.org/PHPSP/liga-solidaria-storage) | 
 develop: [![Build Status](https://travis-ci.org/PHPSP/liga-solidaria-storage.png?branch=develop)](https://travis-ci.org/PHPSP/liga-solidaria-storage)
 
+[![Stories in Ready](https://badge.waffle.io/PHPSP/liga-solidaria-storage.png)](http://waffle.io/PHPSP/liga-solidaria-storage)
+
 ## Requisitos
 
 * Upload de Arquivos
