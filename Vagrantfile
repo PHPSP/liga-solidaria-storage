@@ -38,5 +38,5 @@ Vagrant.configure("2") do |config|
     puppet.options = ['--verbose']
   end
 
-  config.vm.provision :shell, :inline => 'sudo a2dissite default && sudo service apache2 reload'
+  config.vm.provision :shell, :inline => 'sudo a2dissite 000-default && sudo service apache2 reload'
 end
