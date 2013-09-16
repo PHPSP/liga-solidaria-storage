@@ -10,6 +10,7 @@ require $autoload;
 define('PROJECT_ROOT', __DIR__);
 define('CONFIG_DIR', __DIR__ . '/config');
 define('WEB_DIR', __DIR__ . '/public');
+define('UPLOAD_DIR', WEB_DIR . '/uploads');
 
 // Configuration file
 $c = new Container(CONFIG_DIR . '/config.ini');
