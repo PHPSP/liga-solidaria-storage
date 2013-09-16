@@ -1,4 +1,16 @@
+# I'm using https://github.com/fgrehm/bindler
+# It's for 'Dead easy Vagrant plugins management'
+# If you have not it installed in your system,
+# visit https://github.com/fgrehm/bindler#installation for more information
+
+# https://github.com/fgrehm/bindler/issues/22
+# Vagrant.has_plugin? 'bindler'
+
 Vagrant.configure("2") do |config|
+  config.cache.auto_detect = true
+
+  config.hostmanager.enabled = true
+  config.hostmanager.manage_host = true
   config.vm.box = "precise32"
   config.vm.box_url = "http://files.vagrantup.com/precise32.box"
 
