@@ -11,4 +11,5 @@
 # Project Files
 
 config/config.ini
+public/uploads/*
 tests/_reports/*

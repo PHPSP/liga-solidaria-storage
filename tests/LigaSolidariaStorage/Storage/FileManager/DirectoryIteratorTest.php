@@ -31,7 +31,7 @@ class DirectoryIteratorTest extends \PHPUnit_Framework_TestCase
         }
         rmdir($this->folderTestPath);
     }
-    
+
     public function assertPreConditions()
     {
         $class = 'LigaSolidariaStorage\Storage\FileManager\DirectoryIterator';
@@ -49,10 +49,10 @@ class DirectoryIteratorTest extends \PHPUnit_Framework_TestCase
     public function testSetPath()
     {
         $instance = new DirectoryIterator;
-        
+
         $class = 'LigaSolidariaStorage\Storage\FileManager\DirectoryIterator';
         $reflectionClass = new \ReflectionClass($class);
-        
+
         $instance->setPath($this->folderTestPath);
 
         $path = $reflectionClass->getProperty('path');
@@ -84,8 +84,35 @@ class DirectoryIteratorTest extends \PHPUnit_Framework_TestCase
         $this->assertEquals($this->folderTestPath, $instance->getPath());
     }
 
+
+    /**
+     * @covers LigaSolidariaStorage\Storage\FileManager\DirectoryIterator::createIterator()
+     * @depends testSetPath
+     */
+    public function testCreateIterator()
+    {
+        $instance = new DirectoryIterator();
+        $instance->setPath($this->folderTestPath);
+
+        $instance->createIterator();
+
+        $class = 'LigaSolidariaStorage\Storage\FileManager\DirectoryIterator';
+        $reflectionClass = new \ReflectionClass($class);
+
+        $instance->setPath($this->folderTestPath);
+
+        $iterator = $reflectionClass->getProperty('iterator');
+        $iterator->setAccessible(true);
+
+        $this->assertInstanceOf(
+            '\DirectoryIterator',
+            $iterator->getValue($instance)
+        );
+    }
+
     /**
      * @covers LigaSolidariaStorage\Storage\FileManager\DirectoryIterator::getIterator()
+     * @depends testCreateIterator
      */
     public function testGetIterator()
     {
