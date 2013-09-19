@@ -1,5 +1,7 @@
 <?php
 
+namespace LigaSolidariaStorage\Storage\Controller;
+
 use LigaSolidariaStorage\Storage\Controller\ArtefatoListController;
 
 /**
@@ -27,6 +29,4 @@ class ArtefatoListControllerTest extends \PHPUnit_Framework_TestCase
 
         $this->assertSame('Pasta/arquivo não encontrado', $response);
     }
-
-
 }

@@ -30,7 +30,7 @@ class DirectoryIterator
 
     public function setPath($path)
     {
-        if(!is_dir($path)){
+        if (!is_dir($path)) {
             throw new \InvalidArgumentException(
                 "Directory " . $path . " not found."
             );
@@ -50,5 +50,4 @@ class DirectoryIterator
     {
         $this->iterator = new \DirectoryIterator($this->getPath());
     }
-
 }
