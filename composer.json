@@ -5,7 +5,8 @@
         "respect/config": "dev-master",
         "respect/relational": "dev-master",
         "respect/rest": "dev-master",
-        "respect/validation": "dev-master"
+        "respect/validation": "dev-master",
+        "twig/twig": "1.*"
     },
     "require-dev": {
         "phpunit/phpunit": "3.7.*@dev",
