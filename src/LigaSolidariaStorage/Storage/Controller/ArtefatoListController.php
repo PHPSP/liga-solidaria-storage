@@ -14,27 +14,14 @@ class ArtefatoListController implements Routable
     {
         $fullPath = UPLOAD_DIR . '/' . $path;
 
-        if (is_file($fullPath)) {
-            return $fullPath;
-        }
-
         if (!is_dir($fullPath)) {
             return 'Pasta/arquivo não encontrado';
         }
         $directory = new DirectoryIterator($fullPath);
 
-
-
-        $output = '<h1>Arquivos</h1>';
-        $output .= '<ul>';
-        foreach ($directory->getIterator() as $item) {
-            if ($item->isDot()) {
-                continue;
-            }
-            $output .= '<li>' . $item->getFilename() . '</li>';
-        }
-        $output .= '</ul>';
-
-        return $output;
+        return array(
+            'iterator' => $directory->getIterator(),
+            '_view' => 'file_manager.html.twig'
+        );
     }
 }

@@ -1,0 +1,22 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>File Manager</title>
+</head>
+<body>
+    <ul>
+    {% autoescape %}
+    {% for item in iterator %}
+        {% if not item.isDot %}
+            {% if item.isDir %}
+            <li><a href="{{ item.filename }}">{{ item.filename }}</a></li>
+            {% else %}
+            <li>{{ item.filename }}</li>
+            {% endif %}
+        {% endif %}
+    {% endfor %}
+    {% endautoescape %}
+    </ul>
+</body>
+</html>
