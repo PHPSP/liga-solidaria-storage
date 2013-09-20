@@ -14,7 +14,7 @@ class DirectoryIteratorTest extends \PHPUnit_Framework_TestCase
     public function setUp()
     {
         $this->folderTestPath = $folderTestPath = __DIR__ . '/files';
-        if(is_dir($folderTestPath)){
+        if (is_dir($folderTestPath)) {
             $this->tearDown();
         }
         mkdir($folderTestPath, 0777);
@@ -26,7 +26,9 @@ class DirectoryIteratorTest extends \PHPUnit_Framework_TestCase
     public function tearDown()
     {
         foreach (scandir($this->folderTestPath) as $item) {
-            if ($item == '.' || $item == '..') continue;
+            if ($item == '.' || $item == '..') {
+                continue;
+            }
             unlink($this->folderTestPath . DIRECTORY_SEPARATOR . $item);
         }
         rmdir($this->folderTestPath);
@@ -131,7 +133,7 @@ class DirectoryIteratorTest extends \PHPUnit_Framework_TestCase
      * @depends testSetPath
      * @depends testGetIterator
      */
-    public function test__construct()
+    public function testConstruct()
     {
         $instance = new DirectoryIterator($this->folderTestPath);
 

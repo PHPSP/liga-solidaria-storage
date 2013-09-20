@@ -14,10 +14,6 @@ class ArtefatoListController implements Routable
     {
         $fullPath = UPLOAD_DIR . '/' . $path;
 
-        if (is_file($fullPath)) {
-            return $fullPath;
-        }
-
         if (!is_dir($fullPath)) {
             return 'Pasta/arquivo não encontrado';
         }
