@@ -1,0 +1,24 @@
+<!DOCTYPE HTML>
+<html>
+    <head>
+        <meta http-equiv="content-type" content="text/html; charset=utf-8">
+        <title>{% block title %}{% endblock %}</title>
+        <link rel="stylesheet" href="https://raw.github.com/designmodo/Flat-UI/master/bootstrap/css/bootstrap.css">
+        <link rel="stylesheet" href="https://raw.github.com/designmodo/Flat-UI/master/css/flat-ui.css">
+    </head>
+    <body>
+        <div class="container">
+            <div class="row">
+                <div class="span12">
+
+                    {% include "elements/navabar.html.twig" %}
+
+                    {% block content %}
+                        Hello content
+                    {% endblock %}
+
+                </div>
+            </div>
+        </div>
+    </body>
+</html>
