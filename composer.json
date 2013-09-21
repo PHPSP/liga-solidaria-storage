@@ -1,0 +1,20 @@
+{
+    "name": "phpsp/liga-solidaria-storage",
+    "description": "Liga Solidária Storage is a file Storage Project made by PHPSP User Group to Liga Solidária",
+    "require": {
+        "respect/config": "dev-master",
+        "respect/relational": "dev-master",
+        "respect/rest": "dev-master",
+        "respect/validation": "dev-master",
+        "twig/twig": "1.*"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "3.7.*@dev",
+        "squizlabs/php_codesniffer": "1.*"
+    },
+    "autoload": {
+        "psr-0": {
+            "LigaSolidariaStorage": "src\/"
+        }
+    }
+}
