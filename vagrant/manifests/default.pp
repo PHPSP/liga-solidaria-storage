@@ -17,7 +17,10 @@ apt::ppa { 'ppa:ondrej/php5':
   require => Apt::Key['4F4EA0AAE5267A6C']
 }
 
-class { 'puphpet::dotfiles': }
+$dotfiles_path = "/vagrant/${vagrant_path}files/dot/"
+class { 'puphpet::dotfiles':
+  source => $dotfiles_path,
+}
 
 package { [
     'build-essential',

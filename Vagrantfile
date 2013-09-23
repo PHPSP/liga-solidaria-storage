@@ -6,6 +6,8 @@
 # https://github.com/fgrehm/bindler/issues/22
 # Vagrant.has_plugin? 'bindler'
 
+$vagrant_path = "vagrant/"
+
 Vagrant.configure("2") do |config|
   config.cache.auto_detect = true
 
@@ -33,9 +35,12 @@ Vagrant.configure("2") do |config|
     "if [[ ! -f /apt-get-run ]]; then sudo apt-get update && sudo touch /apt-get-run; fi"
 
   config.vm.provision :puppet do |puppet|
-    puppet.manifests_path = "vagrant/manifests"
-    puppet.module_path = "vagrant/modules"
+    puppet.manifests_path = $vagrant_path + "manifests"
+    puppet.module_path = $vagrant_path + "modules"
     puppet.options = ['--verbose']
+    puppet.facter = {
+      "vagrant_path" => $vagrant_path
+    }
   end
 
   config.vm.provision :shell, :inline => 'sudo a2dissite 000-default && sudo service apache2 reload'
