@@ -19,6 +19,13 @@
 #   Specify a custom template to use instead of the default one
 #   The value will be used in content => template($template)
 #
+# [*source*]
+#   Source file for vhost. Alternative to template.
+#   Note that if you decide to source a static file most of the other
+#   parameters of this define won't be used.
+#   Note also that if you set a source file, you've to explicitly set
+#   the template parameter to undef.
+#
 # [*priority*]
 #   The priority of the VirtualHost, lower values are evaluated first
 #   Set to '' to edit default apache value
@@ -81,6 +88,10 @@
 # [*directory_allow_override*]
 #   Set the directory's override configuration
 #
+# [*aliases*]
+#   Set one or more Alias directives (e.g '/phpmyadmin /usr/share/phpMyAdmin'
+#   or ['/alias1 /path/to/alias', '/alias2 /path/to/secondalias'])
+#
 # == Examples:
 #  apache::vhost { 'site.name.fqdn':
 #    docroot  => '/path/to/docroot',
@@ -97,38 +108,49 @@
 #    directory_allow_override   => 'All',
 #  }
 #
+#  apache::vhost { 'sitewithalias':
+#    docroot                    => '/path/to/docroot',
+#    aliases                    => '/phpmyadmin /usr/share/phpMyAdmin',
+#  }
+#
 define apache::vhost (
-  $server_admin                  = '',
-  $server_name                   = '',
-  $docroot                       = '',
-  $docroot_create                = false,
-  $docroot_owner                 = 'root',
-  $docroot_group                 = 'root',
-  $port                          = '80',
-  $ssl                           = false,
-  $template                      = 'apache/virtualhost/vhost.conf.erb',
-  $priority                      = '50',
-  $serveraliases                 = '',
-  $env_variables                 = '', 
-  $passenger                     = false,
-  $passenger_high_performance    = true,
-  $passenger_max_pool_size       = 12,
-  $passenger_pool_idle_time      = 1200,
-  $passenger_max_requests        = 0,
-  $passenger_stat_throttle_rate  = 30,
-  $passenger_rack_auto_detect    = true,
-  $passenger_rails_auto_detect   = false,
-  $passenger_rails_env           = '',
-  $passenger_rails_base_uri      = '',
-  $passenger_rack_env            = '',
-  $passenger_rack_base_uri       = '',
-  $enable                        = true,
-  $directory                     = '',
-  $directory_options             = '',
-  $directory_allow_override      = 'None'
+  $server_admin                 = '',
+  $server_name                  = '',
+  $docroot                      = '',
+  $docroot_create               = false,
+  $docroot_owner                = 'root',
+  $docroot_group                = 'root',
+  $port                         = '80',
+  $ssl                          = false,
+  $template                     = 'apache/virtualhost/vhost.conf.erb',
+  $source                       = '',
+  $priority                     = '50',
+  $serveraliases                = '',
+  $env_variables                = '',
+  $passenger                    = false,
+  $passenger_high_performance   = true,
+  $passenger_max_pool_size      = 12,
+  $passenger_pool_idle_time     = 1200,
+  $passenger_max_requests       = 0,
+  $passenger_stat_throttle_rate = 30,
+  $passenger_rack_auto_detect   = true,
+  $passenger_rails_auto_detect  = false,
+  $passenger_rails_env          = '',
+  $passenger_rails_base_uri     = '',
+  $passenger_rack_env           = '',
+  $passenger_rack_base_uri      = '',
+  $enable                       = true,
+  $directory                    = '',
+  $directory_options            = '',
+  $directory_allow_override     = 'None',
+  $aliases                      = ''
 ) {
 
-  $ensure                            = bool2ensure($enable)
+  $ensure = $enable ? {
+        true => present,
+        false => present,
+        absent => absent,
+  }
   $bool_docroot_create               = any2bool($docroot_create)
   $bool_passenger                    = any2bool($passenger)
   $bool_passenger_high_performance   = any2bool($passenger_high_performance)
@@ -141,7 +163,7 @@ define apache::vhost (
   }
 
   $real_directory = $directory ? {
-    ''      => "${apache::data_dir}",
+    ''      => $apache::data_dir,
     default => $directory,
   }
 
@@ -150,13 +172,18 @@ define apache::vhost (
     default => $server_name,
   }
 
+  $manage_file_source = $source ? {
+    ''      => undef,
+    default => $source,
+  }
+
   # Server admin email
   if $server_admin != '' {
-    $server_admin_email = "${server_admin}"
+    $server_admin_email = $server_admin
   } elsif ($name != 'default') and ($name != 'default-ssl') {
     $server_admin_email = "webmaster@${name}"
   } else {
-    $server_admin_email = "webmaster@localhost"
+    $server_admin_email = 'webmaster@localhost'
   }
 
   # Config file path
@@ -177,11 +204,18 @@ define apache::vhost (
     $config_file_enable_path = "${apache::config_dir}/sites-enabled/000-${name}"
   }
 
+  $manage_file_content = $template ? {
+    ''      => undef,
+    undef   => undef,
+    default => template($template),
+  }
+
   include apache
 
-  file { "${config_file_path}":
+  file { $config_file_path:
     ensure  => $ensure,
-    content => template($template),
+    source  => $manage_file_source,
+    content => $manage_file_content,
     mode    => $apache::config_file_mode,
     owner   => $apache::config_file_owner,
     group   => $apache::config_file_group,
@@ -193,12 +227,13 @@ define apache::vhost (
   # On Debian/Ubuntu manages sites-enabled
   case $::operatingsystem {
     ubuntu,debian,mint: {
-      file { "ApacheVHostEnabled_$name":
-        ensure  => $enable ? {
-          true  => "${config_file_path}",
-          false => absent,
-        },
-        path    => "${config_file_enable_path}",
+      $file_vhost_link_ensure = $enable ? {
+        true  => $config_file_path,
+        false => absent,
+      }
+      file { "ApacheVHostEnabled_${name}":
+        ensure  => $file_vhost_link_ensure,
+        path    => $config_file_enable_path,
         require => Package['apache'],
       }
     }
@@ -222,3 +257,4 @@ define apache::vhost (
     include apache::passenger
   }
 }
+

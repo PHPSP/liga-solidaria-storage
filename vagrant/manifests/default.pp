@@ -40,15 +40,8 @@ apache::dotconf { 'custom':
 apache::module { 'rewrite': }
 
 apache::vhost { 'liga-solidaria-storage.localhost':
-  server_name   => 'liga-solidaria-storage.localhost',
-  serveraliases => [
-],
-  docroot       => '/var/www/liga-solidaria-storage/public/',
-  port          => '80',
-  env_variables => [
-    'APP_ENV dev'
-  ],
-  priority      => '1',
+    source      => "/vagrant/${vagrant_path}files/vhost/liga-solidaria-storage.conf",
+    template    => '',
 }
 
 class { 'php':
