@@ -1,0 +1,58 @@
+{% extends "layouts/layout.html.twig" %}
+
+{% block title %}File mananger{% endblock %}
+
+{% block content %}
+<div class="row">
+    <div class="span3">
+        <h3>Grupos de arquivos</h3>
+        <ul class="nav nav-tabs nav-stacked">
+            <li class="active"><a href="#">file 1</a></li>
+            <li><a href="#">file 2</a></li>
+            <li><a href="#">file 3</a></li>
+        </ul>
+    </div>
+
+    <div class="span9">
+        <h3><i class="fui-list"></i>  Files 1</h3>
+        <ul class="thumbnails">
+            {% autoescape %}
+            {% for item in iterator %}
+                {% if not item.isDot %}
+                    {% if item.isDir %}
+                    <li class="span3">
+                        <div class="thumbnail">
+                            <img src="https://raw.github.com/designmodo/Flat-UI/master/images/icons/Pocket@2x.png" 
+                                alt=""
+                                width="100px">
+                            <div class="caption">
+                                <h4>{{ item.filename }}</h4>
+                                <a href="{{ item.filename }}" 
+                                    class="btn btn-mini btn-primary">
+                                    Ver arquivos
+                                </a>
+                            </div>
+                        </div>
+                    </li>
+                    {% else %}
+                    <li class="span3">
+                        <div class="thumbnail">
+                            <img src="https://raw.github.com/designmodo/Flat-UI/master/images/demo/html-icon.png"
+                                alt=""
+                                width="100px">
+                            <div class="caption">
+                                <h4>{{ item.filename }}</h4>
+                                <a href="{{ item.filename }}" 
+                                    class="btn btn-mini btn-primary">Baixar</a>
+                                <a href="#" class="btn btn-mini btn-danger">Excluir</a>
+                            </div>
+                        </div>
+                    </li>
+                    {% endif %}
+                {% endif %}
+            {% endfor %}
+            {% endautoescape %}
+        </ul>
+    </div>
+</div>
+{% endblock %}
