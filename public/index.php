@@ -9,6 +9,8 @@ $r->isAutoDispatched = false;
 
 $r->get('/list/*', 'LigaSolidariaStorage\Storage\Controller\ArtefatoListController' );
 
+$r->any('/upload', 'LigaSolidariaStorage\Storage\Controller\ArtefatoUploadController');
+
 $r->any(
     '/**',
     function () {
