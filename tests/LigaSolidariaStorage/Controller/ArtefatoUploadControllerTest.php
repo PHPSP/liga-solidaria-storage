@@ -6,19 +6,23 @@ use LigaSolidariaStorage\Storage\Controller\ArtefatoUploadController;
 
 class ArtefatoUploadControllerTest extends \PHPUnit_Framework_TestCase
 {
-    public function testUploadForm()
+    public function assertPreconditions()
+    {
+        $class = 'LigaSolidariaStorage\Storage\Controller\ArtefatoUploadController';
+
+        $instance = new ArtefatoUploadController();
+
+        $this->assertInstanceOf($class, $instance);
+        $this->assertTrue(class_exists($class), 'Class not found: ' . $class);
+    }
+
+    public function testGetShouldWork()
     {
         $controller = new ArtefatoUploadController();
 
         $response = $controller->get();
 
-        $form = array(
-          'tag'        => 'form',
-          'attributes' => array('action' => '/upload', 'method' => 'post'),
-          'descendant' => array('tag' => 'input', 'attributes' => array('name' => 'artefato'))
-        );
-
-        $this->assertTag($form, $response);
+        $this->assertTrue(is_array($response));
     }
 
     /**

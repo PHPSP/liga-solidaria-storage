@@ -6,6 +6,16 @@ use LigaSolidariaStorage\Storage\Entity\Artefato;
 
 class ArtefatoTest extends \PHPUnit_Framework_TestCase
 {
+    protected function setUp()
+    {
+        touch(__DIR__ . '/../testfile.txt');
+    }
+
+    protected function tearDown()
+    {
+        unlink(__DIR__ . '/../testfile.txt');
+    }
+
     /**
      * @expectedException        LigaSolidariaStorage\Storage\Exception\FileNotFoundException
      * @expectedExceptionMessage Arquivo não encontrado.
