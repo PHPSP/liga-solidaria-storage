@@ -11,6 +11,11 @@ default_charset     = 'UTF-8'
 
 view_path           = '../templates/'
 
+; Login credentials
+
+user                = 'admin'
+pass                = '123456'
+
 ; Database parameteres
 
 db_driver           = "mysql"
