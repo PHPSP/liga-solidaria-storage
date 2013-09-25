@@ -12,7 +12,20 @@ class ArtefatoListController implements Routable
 {
     public function get($path = null)
     {
-        $fullPath = UPLOAD_DIR . '/' . $path;
+        $pathWithExtension = "{$path}." .
+            pathinfo($_SERVER['REQUEST_URI'], PATHINFO_EXTENSION);
+        $fullPath = UPLOAD_DIR . '/' . $pathWithExtension;
+
+        if (is_file($fullPath)) {
+            header('Content-Disposition: attachment; filename="' . basename($fullPath) . '"');
+            header("Content-Type: application/octet-stream");
+            header("Content-Transfer-Encoding: binary");
+            header("Content-Length: " . filesize($fullPath));
+            header("Connection: close");
+            readdir($fullPath);
+
+            return null;
+        }
 
         if (!is_dir($fullPath)) {
             return 'Pasta/arquivo não encontrado';
