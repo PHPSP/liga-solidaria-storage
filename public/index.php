@@ -7,16 +7,12 @@ use Respect\Rest\Router;
 $r = new Router;
 $r->isAutoDispatched = false;
 
+$r->any('/', 'LigaSolidariaStorage\Storage\Controller\HomeController');
+
 $r->get('/list/*', 'LigaSolidariaStorage\Storage\Controller\ArtefatoListController' );
 
 $r->any('/upload', 'LigaSolidariaStorage\Storage\Controller\ArtefatoUploadController');
 
-$r->any(
-    '/**',
-    function () {
-        return 'Olá!';
-    }
-);
 
 $r->always(
     'Accept',

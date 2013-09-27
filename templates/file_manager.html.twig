@@ -4,8 +4,8 @@
 
 {% block content %}
 <div class="row">
-    <div class="span3">
-        <h3>Grupos de arquivos</h3>
+    <div class="col-md-3">
+        <h4>Grupos de arquivos</h4>
         <ul class="nav nav-tabs nav-stacked">
             <li class="active"><a href="#">file 1</a></li>
             <li><a href="#">file 2</a></li>
@@ -13,14 +13,14 @@
         </ul>
     </div>
 
-    <div class="span9">
-        <h3><i class="fui-list"></i>  Files 1</h3>
+    <div class="col-md-9">
+        <h4>Files 1</h4>
         <ul class="thumbnails">
             {% autoescape %}
             {% for item in iterator %}
                 {% if not item.isDot %}
                     {% if item.isDir %}
-                    <li class="span3">
+                    <li class="col-md-3">
                         <div class="thumbnail">
                             <img src="https://raw.github.com/designmodo/Flat-UI/master/images/icons/Pocket@2x.png"
                                 alt=""
@@ -35,7 +35,7 @@
                         </div>
                     </li>
                     {% else %}
-                    <li class="span3">
+                    <li class="col-md-3">
                         <div class="thumbnail">
                             <img src="https://raw.github.com/designmodo/Flat-UI/master/images/demo/html-icon.png"
                                 alt=""
