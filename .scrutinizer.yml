@@ -22,13 +22,4 @@ tools:
     php_loc:
         enabled: false
         excluded_dirs: [config/*, public/*, vagrant/*, vendor/*]
-    php_mess_detector:
-        config:
-            rulesets:
-                - cleancode
-                - codesize
-                - controversial
-                - design
-                - naming
-                - unusedcode
     php_analyzer: true
