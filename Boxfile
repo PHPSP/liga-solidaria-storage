@@ -8,6 +8,8 @@ web1:
   php_date_timezone: "America/Sao_Paulo"
   php_error_reporting: -1
   php_display_errors: "1"
+  php_extensions:
+    - zip
   after_build:
     - "if [ ! -f composer.phar ]; then curl -s http://getcomposer.org/installer | php; fi; php composer.phar install --prefer-dist"
     - "cp config/config.ini.dist config/config.ini"
