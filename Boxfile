@@ -12,7 +12,7 @@ web1:
     - zip
   after_build:
     - "if [ ! -f composer.phar ]; then curl -s http://getcomposer.org/installer | php; fi"
-    - "php composer.phar install"
+    - "php composer.phar install --no-dev --optimize-autoloader"
     - "cp config/config.ini.dist config/config.ini"
 
 db1:
