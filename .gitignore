@@ -1,0 +1,15 @@
+# General files
+
+.buildpath
+.project
+.settings/
+.DS_Store
+*~
+/vendor/*
+/.vagrant/*
+
+# Project Files
+
+config/config.ini
+public/uploads/*
+tests/_reports/*

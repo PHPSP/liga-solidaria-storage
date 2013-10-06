@@ -1,0 +1,25 @@
+filter:
+    excluded_paths: [config/*, public/*, vagrant/*, vendor/*]
+    paths: [src/*, tests/*]
+
+before_commands:
+    - "composer install --prefer-source --verbose"
+    - "cp config/config.ini.dist config/config.ini"
+
+tools:
+    php_cpd:
+        excluded_dirs: [config/*, public/*, vagrant/*, vendor/*]
+        names:
+            - bootstrap.php
+            - src/*
+            - tests/*
+    php_code_coverage: true
+    php_pdepend:
+        excluded_dirs: [config/*, public/*, vagrant/*, vendor/*]
+    php_code_sniffer:
+        config:
+            standard: PSR2
+    php_loc:
+        enabled: false
+        excluded_dirs: [config/*, public/*, vagrant/*, vendor/*]
+    php_analyzer: true
