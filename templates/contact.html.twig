@@ -1,0 +1,26 @@
+{% extends "layouts/layout.html.twig" %}
+
+{% block title %}Contato{% endblock %}
+
+{% block content %}
+    <form method="post" action="" role="form">
+        <div class="form-group">
+            <label for="name">Nome</label>
+            <input type="text" class="form-control" id="name">
+        </div>
+        <div class="form-group">
+            <label for="reason">Motivo</label>
+            <select class="form-control" id="reason" >
+                <option>Atrasos</option>
+                <option>Outros</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="text">Mensagem</label>
+            <textarea class='form-control'>
+
+            </textarea>
+        </div>
+        <button type="submit" class="btn btn-default">Submit</button>
+    </form>
+{% endblock %}
