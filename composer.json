@@ -6,7 +6,8 @@
         "respect/relational": "dev-master",
         "respect/rest": "dev-master",
         "respect/validation": "dev-master",
-        "twig/twig": "1.*"
+        "twig/twig": "1.*", 
+        "swiftmailer/swiftmailer" : "v5.0.2"
     },
     "require-dev": {
         "phpunit/phpunit": "3.7.*@dev",
