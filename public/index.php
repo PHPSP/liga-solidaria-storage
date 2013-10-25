@@ -4,39 +4,21 @@ require __DIR__ . '/../bootstrap.php';
 
 use Respect\Rest\Router;
 
-// Esta closure esta aqui somente para reutilizarmos nas
-// chamadas do Router o ideal seria termos uma classe
-// de autenticacao e o codigo separado, como não há tempo
-// ficou assim, por enquanto...
-$isauth = function ($user, $pass) use ($c) {
-    
-    $authenticated = $user === $c->user && $pass === $c->pass;
-    
-    if (!$authenticated) {
-        header('HTTP/1.1 401');
-        header("WWW-Authenticate: Basic realm=\"Login\"");
-    
-        exit('Login cancelado');
-    }
-    return $authenticated;
-};
-
+$auth = new LigaSolidariaStorage\Routine\Auth;
+$authenticated = function() use($auth) {return $auth();};
 $r = new Router;
 $r->isAutoDispatched = false;
 
+$r->any('/login', 'LigaSolidariaStorage\Storage\Controller\Login');
+
+$r->any('/', 'LigaSolidariaStorage\Storage\Controller\HomeController')
+        ->by($authenticated);
+
 $r->get('/list/*', 'LigaSolidariaStorage\Storage\Controller\ArtefatoListController' )
-        ->authBasic('Acesso', $isauth);
+        ->by($authenticated);
 
 $r->any('/upload', 'LigaSolidariaStorage\Storage\Controller\ArtefatoUploadController')
-        ->authBasic('Acesso', $isauth);
-
-
-$r->any(
-    '/**',
-    function () {
-        header('Location: /list');
-    }
-);
+        ->by($authenticated);
 
 $r->always(
     'Accept',
