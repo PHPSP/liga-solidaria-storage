@@ -12,13 +12,14 @@ $r->isAutoDispatched = false;
 $r->any('/login', 'LigaSolidariaStorage\Storage\Controller\Login');
 
 $r->any('/', 'LigaSolidariaStorage\Storage\Controller\HomeController')
-        ->by($authenticated);
+    ->by($authenticated);
 
 $r->get('/list/*', 'LigaSolidariaStorage\Storage\Controller\ArtefatoListController' )
-        ->by($authenticated);
+    ->by($authenticated);
 
 $r->any('/upload', 'LigaSolidariaStorage\Storage\Controller\ArtefatoUploadController')
-        ->by($authenticated);
+    ->by($authenticated);
+
 $r->any('/contact', 'LigaSolidariaStorage\Storage\Controller\ContactController', array($c->mailer));
 
 $r->always(
