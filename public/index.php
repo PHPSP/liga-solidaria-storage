@@ -10,6 +10,7 @@ $r = new Router;
 $r->isAutoDispatched = false;
 
 $r->any('/login', 'LigaSolidariaStorage\Storage\Controller\Login');
+$r->get('/logout', 'LigaSolidariaStorage\Storage\Controller\Logout');
 
 $r->any('/', 'LigaSolidariaStorage\Storage\Controller\HomeController')
     ->by($authenticated);
