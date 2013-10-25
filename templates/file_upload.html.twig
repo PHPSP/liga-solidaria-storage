@@ -4,18 +4,16 @@
 
 {% block content %}
 <div class="row">
-    <div class="span9">
-        <div class="col-md-9">
-            <h3 class="col-md-9">Upload de arquivo</h3>
-            <form action="/upload" method="post" enctype="multipart/form-data">
-                <div class="form-group col-md-6">
-                    <input type="file" name="artefato" />
-                </div>
-                <div class="form-group col-md-3">
-                    <input type="submit" class="btn btn-large btn-block btn-primary" value="Incluir" />
-                </div>
-            </form>
-        </div>
+    <div class="col-md-9">
+        <h3 class="col-md-9">Upload de arquivo</h3>
+        <form action="/upload" method="post" enctype="multipart/form-data">
+            <div class="form-group col-md-6">
+                <input type="file" name="artefato" />
+            </div>
+            <div class="form-group col-md-3">
+                <input type="submit" class="btn btn-large btn-block btn-primary" value="Incluir" />
+            </div>
+        </form>
     </div>
 </div>
 {% endblock %}

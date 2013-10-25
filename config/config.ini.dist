@@ -56,3 +56,15 @@ paths   = [view_path]
 [twig Twig_Environment]
 loader  = [loader]
 options = [options]
+
+; mailer parameters 
+
+[mailer]
+smtp                = smtp.gmail.com
+port                = 465
+ssl                 = true
+username            = 
+password            = 
+receiver_mail       = 
+receiver_name       = PHPSP + Liga
+subject             = Informativo Liga

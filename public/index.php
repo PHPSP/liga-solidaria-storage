@@ -19,6 +19,7 @@ $r->get('/list/*', 'LigaSolidariaStorage\Storage\Controller\ArtefatoListControll
 
 $r->any('/upload', 'LigaSolidariaStorage\Storage\Controller\ArtefatoUploadController')
         ->by($authenticated);
+$r->any('/contact', 'LigaSolidariaStorage\Storage\Controller\ContactController', array($c->mailer));
 
 $r->always(
     'Accept',
