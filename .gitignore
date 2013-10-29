@@ -11,5 +11,6 @@
 # Project Files
 
 config/config.ini
+phpunit.xml
 public/uploads/*
 tests/_reports/*
