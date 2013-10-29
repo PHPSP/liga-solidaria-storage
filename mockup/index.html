@@ -5,30 +5,41 @@
 <title>Liga Solidaria Storage</title>
 
 <!-- Loading Bootstrap -->
-<link rel="stylesheet"
-	href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css">
+<link rel="stylesheet" href="//code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css">
+<link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css">
 
 <!-- Loading Flat UI -->
 <link rel="shortcut icon" href="../public/images/favicon.ico">
 
 <!-- HTML5 shim, for IE6-8 support of HTML5 elements. All other JS at the end of file. -->
-<!--[if lt IE 9]><script src="../js/html5shiv.js"></script><![endif]-->
+<!--[if lt IE 9]><script src="../public/js/html5shiv.js"></script><![endif]-->
 
 <style>
-	footer	{background-color: #666666; border-top:5px solid #EEEE00; border-bottom:5px solid #0066FF;}
+	footer	        {background-color: #666666; border-top:5px solid #EEEE00; border-bottom:5px solid #0066FF; color:white;}
+    footer p        {text-align: center; padding:50px 0}
+    .logo           {margin:10px 0;}
+    .phpsp          {padding-top:20px;}
+    .navbar-right   {padding-right: 10px;}
+
+    .badge-primary{background-color:#428BCA;}
+    .badge-success{background-color:#5CB85C;}
+    .badge-info{background-color:#5BC0DE;}
+    .badge-warning{background-color:#F0AD4E;}
+    .badge-danger{background-color:#D9534F;}
 </style>
 </head>
 <body>
 	<div class="container">
-		<img src=¨img-logo.png¨ />
+		<img class ="logo" src="../mockup/img-logo.png">
 		<nav class="navbar navbar-default" role="navigation">
 			<!-- Brand and toggle get grouped for better mobile display -->
 			<div class="navbar-header">
 				<button type="button" class="navbar-toggle" data-toggle="collapse"
 					data-target=".navbar-ex1-collapse">
-					<span class="sr-only">Toggle navigation</span> <span
-						class="icon-bar"></span> <span class="icon-bar"></span> <span
-						class="icon-bar"></span>
+					<span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
 				</button>
 				<a class="navbar-brand" href="#">Liga Solidaria</a>
 			</div>
@@ -59,6 +70,10 @@
 						</ul>
 					</div>
 				</ul>
+                <ul class="nav navbar-nav navbar-right">
+                    <button type="button" class="btn btn-default navbar-btn">Contato</button>
+                    <button type="button" class="btn btn-default navbar-btn">Logout</button>
+                </ul>
 			</div>
 		</nav>
 		<div class="row">
@@ -69,11 +84,21 @@
   					</div>
 					<div class="panel-body">
 						<ul class="list-group">
-							<li class="list-group-item"><a href="#">Grupo 1<span class="badge pull-right">42</span></a></li>
-							<li class="list-group-item"><a href="#">Grupo 2<span class="badge pull-right">42</span></a></li>
-							<li class="list-group-item"><a href="#">Grupo 3<span class="badge pull-right">42</span></a></li>
-							<li class="list-group-item"><a href="#">Grupo 4<span class="badge pull-right">42</span></a></li>
-							<li class="list-group-item"><a href="#">Grupo 5<span class="badge pull-right">42</span></a></li>
+							<li class="list-group-item"><a href="#">Grupo 1<span class="badge badge-danger pull-right">42</span></a></li>
+							<li class="list-group-item"><a href="#">Grupo 2<span class="badge badge-primary pull-right">42</span></a></li>
+							<li class="list-group-item"><a href="#">Grupo 3<span class="badge badge-success pull-right">42</span></a></li>
+							<li class="list-group-item"><a href="#">Grupo 4<span class="badge badge-info pull-right">42</span></a></li>
+							<li class="list-group-item"><a href="#">Grupo 5<span class="badge badge-warning pull-right">42</span></a></li>
+                            <li class="list-group-item"><a href="#">Grupo 1<span class="badge badge-danger pull-right">42</span></a></li>
+                            <li class="list-group-item"><a href="#">Grupo 2<span class="badge badge-primary pull-right">42</span></a></li>
+                            <li class="list-group-item"><a href="#">Grupo 3<span class="badge badge-success pull-right">42</span></a></li>
+                            <li class="list-group-item"><a href="#">Grupo 4<span class="badge badge-info pull-right">42</span></a></li>
+                            <li class="list-group-item"><a href="#">Grupo 5<span class="badge badge-warning pull-right">42</span></a></li>
+                            <li class="list-group-item"><a href="#">Grupo 1<span class="badge badge-danger pull-right">42</span></a></li>
+                            <li class="list-group-item"><a href="#">Grupo 2<span class="badge badge-primary pull-right">42</span></a></li>
+                            <li class="list-group-item"><a href="#">Grupo 3<span class="badge badge-success pull-right">42</span></a></li>
+                            <li class="list-group-item"><a href="#">Grupo 4<span class="badge badge-info pull-right">42</span></a></li>
+                            <li class="list-group-item"><a href="#">Grupo 5<span class="badge badge-warning pull-right">42</span></a></li>
 						</ul>
 					</div>
 				</div>			
@@ -81,60 +106,101 @@
 			<div class="col-md-9">
 				<div class="panel panel-success">
 					<div class="panel-heading">
-	    				<h3 class="panel-title">Upload de Arquivos</h3>
+	    				<h3 class="panel-title">Arquivos Encontrados</h3>
 	  				</div>
 					<div class="panel-body">
 						<div class="row">
 							<div class="col-md-4">
-							  <div class="thumbnail">
-							    <img data-src="holder.js/300x200" alt="...">
-							    <div class="caption">
-							      <h3>Thumbnail label</h3>
-							      <p>...</p>
-							      <p><a href="#" class="btn btn-primary">Button</a> <a href="#" class="btn btn-default">Button</a></p>
-							    </div>
-							  </div>
+                                <div class="thumbnail">
+                                    <img src="../mockup/html-icon.png" alt="...">
+                                    <div class="options">
+
+                                    </div>
+                                    <div class="caption">
+                                        <h3>Layout do Site</h3>
+                                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras id augue eros. Morbi vitae vehicula velit. In ultricies in nibh sit amet volutpat. Maecenas pellentesque sapien quis ante scelerisque sodales.</p>
+                                        <span class="label label-default">Default</span>
+                                        <span class="label label-primary">Primary</span>
+                                        <span class="label label-success">Success</span>
+                                        <span class="label label-info">Info</span>
+                                        <span class="label label-warning">Warning</span>
+                                        <span class="label label-danger">Danger</span>
+                                    </div>
+                                </div>
 							</div>
 							<div class="col-md-4">
-							  <div class="thumbnail">
-							    <img data-src="holder.js/300x200" alt="...">
-							    <div class="caption">
-							      <h3>Thumbnail label</h3>
-							      <p>...</p>
-							      <p><a href="#" class="btn btn-primary">Button</a> <a href="#" class="btn btn-default">Button</a></p>
+							    <div class="thumbnail">
+							        <img src="../mockup/html-icon.png" alt="...">
+                                    <div class="options">
+
+                                    </div>
+							        <div class="caption">
+                                        <h3>Logo da Liga</h3>
+                                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras id augue eros. Morbi vitae vehicula velit. In ultricies in nibh sit amet volutpat. Maecenas pellentesque sapien quis ante scelerisque sodales.</p>
+                                        <span class="label label-default">Default</span>
+                                        <span class="label label-primary">Primary</span>
+                                        <span class="label label-success">Success</span>
+                                        <span class="label label-info">Info</span>
+                                        <span class="label label-warning">Warning</span>
+                                        <span class="label label-danger">Danger</span>
+							        </div>
 							    </div>
-							  </div>
 							</div>
 							<div class="col-md-4">
-							  <div class="thumbnail">
-							    <img data-src="holder.js/300x200" alt="...">
-							    <div class="caption">
-							      <h3>Thumbnail label</h3>
-							      <p>...</p>
-							      <p><a href="#" class="btn btn-primary">Button</a> <a href="#" class="btn btn-default">Button</a></p>
-							    </div>
-							  </div>
+                                <div class="thumbnail">
+                                    <img src="../mockup/html-icon.png" alt="...">
+                                    <div class="options">
+
+                                    </div>
+                                    <div class="caption">
+                                        <h3>Logo do PHPSP</h3>
+                                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras id augue eros. Morbi vitae vehicula velit. In ultricies in nibh sit amet volutpat. Maecenas pellentesque sapien quis ante scelerisque sodales.</p>
+                                        <span class="label label-default">Default</span>
+                                        <span class="label label-primary">Primary</span>
+                                        <span class="label label-success">Success</span>
+                                        <span class="label label-info">Info</span>
+                                        <span class="label label-warning">Warning</span>
+                                        <span class="label label-danger">Danger</span>
+                                    </div>
+                                </div>
 							</div>
 						</div>
 					</div>
+                    <div class="text-center">
+                        <ul class="pagination">
+                            <li><a href="#">&laquo;</a></li>
+                            <li><a href="#">1</a></li>
+                            <li><a href="#">2</a></li>
+                            <li><a href="#">3</a></li>
+                            <li><a href="#">4</a></li>
+                            <li><a href="#">5</a></li>
+                            <li><a href="#">&raquo;</a></li>
+                        </ul>
+                    </div>
 				</div>
-			</div>
+
+
+            </div>
 		</div>
 	</div>
 	<footer>
 		<div class="container">
 			<div class="row">
-				<div class="col-md-12">
-					<p>
-						Projeto de Storage para a Liga Solidária Desenvolvido por <a
-							href="https://github.com/PHPSP">PHPSP</a>
-					</p>
+                <div class="col-md-2">
+                    <img class ="logo pull-left" src="../mockup/img-logo.png">
+                </div>
+				<div class="col-md-8">
+					<p>Projeto de Storage para a Liga Solidária Desenvolvido por <a href="https://github.com/PHPSP">PHPSP</a></p>
 				</div>
+                <div class="col-md-2">
+                    <img class ="logo pull-right phpsp" width="250px" src="../mockup/logo-php-sp.svg">
+                </div>
 			</div>
 		</div>
 	</footer>
-	<script src="/js/jquery-1.10.2.min.js"></script>
-	<script src="/js/jquery-ui-1.10.3.custom.min.js"></script>
+
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+    <script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
 	<script src="//netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
 </body>
 </html>
