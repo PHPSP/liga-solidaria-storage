@@ -8,6 +8,7 @@
 /vendor/*
 /.vagrant/*
 private/
+.idea/
 
 # InteliJ Idea Project Files
 *.iml
