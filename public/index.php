@@ -4,14 +4,22 @@ require __DIR__ . '/../bootstrap.php';
 
 use Respect\Rest\Router;
 
+$auth = new LigaSolidariaStorage\Routine\Auth;
+$authenticated = function() use($auth) {return $auth();};
 $r = new Router;
 $r->isAutoDispatched = false;
 
-$r->any('/', 'LigaSolidariaStorage\Storage\Controller\HomeController');
+$r->any('/login', 'LigaSolidariaStorage\Storage\Controller\Login');
+$r->get('/logout', 'LigaSolidariaStorage\Storage\Controller\Logout');
 
-$r->get('/list/*', 'LigaSolidariaStorage\Storage\Controller\ArtefatoListController' );
+$r->any('/', 'LigaSolidariaStorage\Storage\Controller\HomeController')
+    ->by($authenticated);
 
-$r->any('/upload', 'LigaSolidariaStorage\Storage\Controller\ArtefatoUploadController');
+$r->get('/list/*', 'LigaSolidariaStorage\Storage\Controller\ArtefatoListController' )
+    ->by($authenticated);
+
+$r->any('/upload', 'LigaSolidariaStorage\Storage\Controller\ArtefatoUploadController')
+    ->by($authenticated);
 
 $r->any('/contact', 'LigaSolidariaStorage\Storage\Controller\ContactController', array($c->mailer));
 
