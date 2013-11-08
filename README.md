@@ -31,3 +31,7 @@ Neste projeto, estamos utilizando o [__*Semantic Versioning 2.0.0*__](http://sem
 
 
 Para informações mais completas visite a [__*wiki*__](https://github.com/PHPSP/liga-solidaria-storage/wiki)
+
+
+[![Bitdeli Badge](https://d2weczhvl823v0.cloudfront.net/PHPSP/liga-solidaria-storage/trend.png)](https://bitdeli.com/free "Bitdeli Badge")
+
