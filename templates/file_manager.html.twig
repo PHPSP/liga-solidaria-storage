@@ -5,54 +5,98 @@
 {% block content %}
 <div class="row">
     <div class="col-md-3">
-        <h4>Grupos de arquivos</h4>
-        <ul class="nav nav-tabs nav-stacked">
-            <li class="active"><a href="#">file 1</a></li>
-            <li><a href="#">file 2</a></li>
-            <li><a href="#">file 3</a></li>
-        </ul>
+        <div class="panel panel-primary">
+            <div class="panel-heading">
+                <h3 class="panel-title">Grupos de Arquivos</h3>
+            </div>
+            <div class="panel-body">
+                <ul class="list-group">
+                    <li class="list-group-item"><a href="#">Grupo 1<span class="badge badge-danger pull-right">42</span></a></li>
+                    <li class="list-group-item"><a href="#">Grupo 2<span class="badge badge-primary pull-right">42</span></a></li>
+                    <li class="list-group-item"><a href="#">Grupo 3<span class="badge badge-success pull-right">42</span></a></li>
+                    <li class="list-group-item"><a href="#">Grupo 4<span class="badge badge-info pull-right">42</span></a></li>
+                    <li class="list-group-item"><a href="#">Grupo 5<span class="badge badge-warning pull-right">42</span></a></li>
+                    <li class="list-group-item"><a href="#">Grupo 1<span class="badge badge-danger pull-right">42</span></a></li>
+                    <li class="list-group-item"><a href="#">Grupo 2<span class="badge badge-primary pull-right">42</span></a></li>
+                    <li class="list-group-item"><a href="#">Grupo 3<span class="badge badge-success pull-right">42</span></a></li>
+                    <li class="list-group-item"><a href="#">Grupo 4<span class="badge badge-info pull-right">42</span></a></li>
+                    <li class="list-group-item"><a href="#">Grupo 5<span class="badge badge-warning pull-right">42</span></a></li>
+                    <li class="list-group-item"><a href="#">Grupo 1<span class="badge badge-danger pull-right">42</span></a></li>
+                    <li class="list-group-item"><a href="#">Grupo 2<span class="badge badge-primary pull-right">42</span></a></li>
+                    <li class="list-group-item"><a href="#">Grupo 3<span class="badge badge-success pull-right">42</span></a></li>
+                    <li class="list-group-item"><a href="#">Grupo 4<span class="badge badge-info pull-right">42</span></a></li>
+                    <li class="list-group-item"><a href="#">Grupo 5<span class="badge badge-warning pull-right">42</span></a></li>
+                </ul>
+            </div>
+        </div>
     </div>
-
     <div class="col-md-9">
-        <h4>Files 1</h4>
-        <ul class="thumbnails">
-            {% autoescape %}
-            {% for item in iterator %}
-                {% if not item.isDot %}
-                    {% if item.isDir %}
-                    <li class="col-md-3">
-                        <div class="thumbnail">
-                            <img src="https://raw.github.com/designmodo/Flat-UI/master/images/icons/Pocket@2x.png"
-                                alt=""
-                                width="100px">
-                            <div class="caption">
-                                <h4>{{ item.filename }}</h4>
-                                <a href="{{ item.filename }}/"
-                                    class="btn btn-mini btn-primary">
-                                    Ver arquivos
-                                </a>
-                            </div>
-                        </div>
-                    </li>
-                    {% else %}
-                    <li class="col-md-3">
-                        <div class="thumbnail">
-                            <img src="https://raw.github.com/designmodo/Flat-UI/master/images/demo/html-icon.png"
-                                alt=""
-                                width="100px">
-                            <div class="caption">
-                                <h4>{{ item.filename }}</h4>
-                                <a href="{{ item.filename }}"
-                                    class="btn btn-mini btn-primary">Baixar</a>
-                                <a href="#" class="btn btn-mini btn-danger">Excluir</a>
-                            </div>
-                        </div>
-                    </li>
-                    {% endif %}
-                {% endif %}
-            {% endfor %}
-            {% endautoescape %}
-        </ul>
+        <div class="panel panel-success">
+            <div class="panel-heading">
+                <h3 class="panel-title">Arquivos Encontrados</h3>
+            </div>
+            <div class="panel-body">
+                <div class="row">
+                    {% autoescape %}
+                    {% for item in iterator %}
+                        {% if not item.isDot %}
+                            {% if item.isDir %}
+                                <div class="col-md-4">
+                                    <div class="thumbnail">
+                                        <img src="https://raw.github.com/designmodo/Flat-UI/master/images/icons/Pocket@2x.png" alt="" width="100px" />
+                                        <div class="options">
+                                            <a href="{{ item.filename }}/" class="btn btn-mini btn-primary">Ver Arquivos</a>
+                                        </div>
+                                        <div class="caption">
+                                            <h3>{{ item.filename }}</h3>
+                                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras id augue eros. Morbi vitae vehicula velit. In ultricies in nibh sit amet volutpat. Maecenas pellentesque sapien quis ante scelerisque sodales.</p>
+                                            <span class="label label-default">Default</span>
+                                            <span class="label label-primary">Primary</span>
+                                            <span class="label label-success">Success</span>
+                                            <span class="label label-info">Info</span>
+                                            <span class="label label-warning">Warning</span>
+                                            <span class="label label-danger">Danger</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            {% else %}
+                                <div class="col-md-4">
+                                    <div class="thumbnail">
+                                        <img src="https://raw.github.com/designmodo/Flat-UI/master/images/demo/html-icon.png" alt="" width="100px" />
+                                        <div class="options">
+                                            <a href="{{ item.filename }}" class="btn btn-mini btn-primary">Baixar</a>
+                                            <a href="#" class="btn btn-mini btn-danger">Excluir</a>
+                                        </div>
+                                        <div class="caption">
+                                            <h3>{{ item.filename }}</h3>
+                                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras id augue eros. Morbi vitae vehicula velit. In ultricies in nibh sit amet volutpat. Maecenas pellentesque sapien quis ante scelerisque sodales.</p>
+                                            <span class="label label-default">Default</span>
+                                            <span class="label label-primary">Primary</span>
+                                            <span class="label label-success">Success</span>
+                                            <span class="label label-info">Info</span>
+                                            <span class="label label-warning">Warning</span>
+                                            <span class="label label-danger">Danger</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            {% endif %}
+                        {% endif %}
+                    {% endfor %}
+                    {% endautoescape %}
+                </div>
+            </div>
+            <div class="text-center">
+                <ul class="pagination">
+                    <li><a href="#">&laquo;</a></li>
+                    <li><a href="#">1</a></li>
+                    <li><a href="#">2</a></li>
+                    <li><a href="#">3</a></li>
+                    <li><a href="#">4</a></li>
+                    <li><a href="#">5</a></li>
+                    <li><a href="#">&raquo;</a></li>
+                </ul>
+            </div>
+        </div>
     </div>
 </div>
 {% endblock %}
