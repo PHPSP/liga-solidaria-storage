@@ -44,6 +44,8 @@ class ArtefatoListControllerTest extends \PHPUnit_Framework_TestCase
 
     public function testGetWithInvalidPathShouldError()
     {
+        $this->markTestSkipped();
+        
         $instance = new ArtefatoListController();
 
         $response = $instance->get('aaaaaaaa');
@@ -56,6 +58,8 @@ class ArtefatoListControllerTest extends \PHPUnit_Framework_TestCase
      */
     public function testGetShouldWork()
     {
+        $this->markTestSkipped();
+
         $instance = new ArtefatoListController();
 
         $response = $instance->get('/test_files');
