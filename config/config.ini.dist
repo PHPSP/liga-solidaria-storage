@@ -13,7 +13,7 @@ view_path           = '../templates/'
 
 ; Login credentials
 
-user                = 'admin'
+user                = 'admin@admin.com'
 pass                = '123456'
 
 ; Database parameteres
