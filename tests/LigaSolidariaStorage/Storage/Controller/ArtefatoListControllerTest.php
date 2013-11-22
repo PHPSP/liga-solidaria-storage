@@ -5,10 +5,13 @@ namespace LigaSolidariaStorage\Storage\Controller;
 use LigaSolidariaStorage\Storage\Controller\ArtefatoListController;
 
 /**
-* Test ArtefatoListController
-*/
+ * Test ArtefatoListController
+ */
 class ArtefatoListControllerTest extends \PHPUnit_Framework_TestCase
 {
+
+    protected $folderTestPath;
+
     public function setUp()
     {
         $this->folderTestPath = $folderTestPath = UPLOAD_DIR . '/test_files';
@@ -31,6 +34,7 @@ class ArtefatoListControllerTest extends \PHPUnit_Framework_TestCase
         }
         rmdir($this->folderTestPath);
     }
+
     public function assertPreconditions()
     {
         $class =
@@ -44,8 +48,8 @@ class ArtefatoListControllerTest extends \PHPUnit_Framework_TestCase
 
     public function testGetWithInvalidPathShouldError()
     {
-        $this->markTestSkipped();
-        
+        $_SERVER['REQUEST_URI'] = 'aaaaaaa.txt';
+
         $instance = new ArtefatoListController();
 
         $response = $instance->get('aaaaaaaa');
@@ -58,7 +62,8 @@ class ArtefatoListControllerTest extends \PHPUnit_Framework_TestCase
      */
     public function testGetShouldWork()
     {
-        $this->markTestSkipped();
+
+        $_SERVER['REQUEST_URI'] = 'test_files';
 
         $instance = new ArtefatoListController();
 
