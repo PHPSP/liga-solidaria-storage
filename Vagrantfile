@@ -1,12 +1,15 @@
-# I'm using https://github.com/fgrehm/bindler
-# It's for 'Dead easy Vagrant plugins management'
-# If you have not it installed in your system,
-# visit https://github.com/fgrehm/bindler#installation for more information
-
-# https://github.com/fgrehm/bindler/issues/22
-# Vagrant.has_plugin? 'bindler'
-
+# folder where vagrant files are located (modules, manifests, plugins etc.)
 $vagrant_path = "vagrant/"
+
+# Warns to use Bindler
+unless Vagrant.has_plugin?("Bindler")
+  puts "--- WARNING ---"
+  puts "I'm using Bindler, https://github.com/fgrehm/bindler"
+  puts "It's for 'Dead easy Vagrant plugins management'"
+  puts "If you have not it installed in your system,"
+  puts "visit https://github.com/fgrehm/bindler#installation for more information"
+end
+
 
 Vagrant.configure("2") do |config|
   config.cache.auto_detect = true
