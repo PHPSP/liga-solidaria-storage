@@ -26,10 +26,8 @@ class Login implements Routable
             $_SESSION['email'] = $_POST['email'];
 
             header('Location: /');
-
         } catch(Argument $e) {
-            $vars['message'] = $e->getMessage();
-            return $vars;
+        	return array('_view' => 'login.html.twig', 'message' => $e->getMessage());
         }
     }
 }
