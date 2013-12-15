@@ -12,10 +12,14 @@ end
 
 
 Vagrant.configure("2") do |config|
-  config.cache.auto_detect = true
+  if Vagrant.has_plugin?("vagrant-cachier")
+    config.cache.auto_detect = true
+  end
 
-  config.hostmanager.enabled = true
-  config.hostmanager.manage_host = true
+  if Vagrant.has_plugin?("HostManager")
+    config.hostmanager.enabled = true
+    config.hostmanager.manage_host = true
+  end
 
   config.vm.box = "precise32"
   config.vm.box_url = "http://files.vagrantup.com/precise32.box"
