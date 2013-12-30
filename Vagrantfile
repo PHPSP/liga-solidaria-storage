@@ -1,18 +1,25 @@
-# I'm using https://github.com/fgrehm/bindler
-# It's for 'Dead easy Vagrant plugins management'
-# If you have not it installed in your system,
-# visit https://github.com/fgrehm/bindler#installation for more information
-
-# https://github.com/fgrehm/bindler/issues/22
-# Vagrant.has_plugin? 'bindler'
-
+# folder where vagrant files are located (modules, manifests, plugins etc.)
 $vagrant_path = "vagrant/"
 
-Vagrant.configure("2") do |config|
-  config.cache.auto_detect = true
+# Warns to use Bindler
+unless Vagrant.has_plugin?("Bindler")
+  puts "--- WARNING ---"
+  puts "I'm using Bindler, https://github.com/fgrehm/bindler"
+  puts "It's for 'Dead easy Vagrant plugins management'"
+  puts "If you have not it installed in your system,"
+  puts "visit https://github.com/fgrehm/bindler#installation for more information"
+end
 
-  config.hostmanager.enabled = true
-  config.hostmanager.manage_host = true
+
+Vagrant.configure("2") do |config|
+  if Vagrant.has_plugin?("vagrant-cachier")
+    config.cache.auto_detect = true
+  end
+
+  if Vagrant.has_plugin?("HostManager")
+    config.hostmanager.enabled = true
+    config.hostmanager.manage_host = true
+  end
 
   config.vm.box = "precise32"
   config.vm.box_url = "http://files.vagrantup.com/precise32.box"
