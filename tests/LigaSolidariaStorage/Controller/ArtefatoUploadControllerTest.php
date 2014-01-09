@@ -10,7 +10,7 @@ class ArtefatoUploadControllerTest extends \PHPUnit_Framework_TestCase
     {
         $class = 'LigaSolidariaStorage\Storage\Controller\ArtefatoUploadController';
 
-        $instance = new ArtefatoUploadController();
+        $instance = new ArtefatoUploadController(sys_get_temp_dir());
 
         $this->assertInstanceOf($class, $instance);
         $this->assertTrue(class_exists($class), 'Class not found: ' . $class);
@@ -18,7 +18,7 @@ class ArtefatoUploadControllerTest extends \PHPUnit_Framework_TestCase
 
     public function testGetShouldWork()
     {
-        $controller = new ArtefatoUploadController();
+        $controller = new ArtefatoUploadController(sys_get_temp_dir());
 
         $response = $controller->get();
 
@@ -31,7 +31,7 @@ class ArtefatoUploadControllerTest extends \PHPUnit_Framework_TestCase
      */
     public function testFilesServerVariableEmptyOnFileUploadMustFail()
     {
-        $controller = new ArtefatoUploadController();
+        $controller = new ArtefatoUploadController(sys_get_temp_dir());
 
         $response = $controller->post();
     }
@@ -44,7 +44,7 @@ class ArtefatoUploadControllerTest extends \PHPUnit_Framework_TestCase
     {
         $_FILES = array('artefato' => array('name' => 'test.txt', 'tmp_name' => __DIR__ . '/../testfile.txt'));
         
-        $controller = new ArtefatoUploadController();
+        $controller = new ArtefatoUploadController(sys_get_temp_dir());
 
         $response = $controller->post();
     }

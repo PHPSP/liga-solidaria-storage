@@ -6,6 +6,13 @@ use Respect\Rest\Routable;
 
 class ArtefatoUploadController implements Routable
 {
+    private $uploadDir; 
+
+    public function __construct($uploadDir)
+    {
+        $this->uploadDir = $uploadDir;
+    }
+
     public function get()
     {
         return array(
@@ -27,7 +34,7 @@ class ArtefatoUploadController implements Routable
 
     private function moveUploadedFile($artefato)
     {
-        if (!move_uploaded_file($artefato['tmp_name'], UPLOAD_DIR . DIRECTORY_SEPARATOR . $artefato['name'])) {
+        if (!move_uploaded_file($artefato['tmp_name'], $this->uploadDir . DIRECTORY_SEPARATOR . $artefato['name'])) {
             throw new \RuntimeException("Houve um problema ao enviar seu arquivo, tente novamente.", 2);
         }
 

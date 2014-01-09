@@ -15,10 +15,10 @@ $r->get('/logout', 'LigaSolidariaStorage\Storage\Controller\Logout');
 $r->any('/', 'LigaSolidariaStorage\Storage\Controller\HomeController')
     ->by($authenticated);
 
-$r->get('/list/*', 'LigaSolidariaStorage\Storage\Controller\ArtefatoListController' )
+$r->get('/list/*', 'LigaSolidariaStorage\Storage\Controller\ArtefatoListController', array(UPLOAD_DIR) )
     ->by($authenticated);
 
-$r->any('/upload', 'LigaSolidariaStorage\Storage\Controller\ArtefatoUploadController')
+$r->any('/upload', 'LigaSolidariaStorage\Storage\Controller\ArtefatoUploadController', array(UPLOAD_DIR))
     ->by($authenticated);
 
 $r->any('/contact', 'LigaSolidariaStorage\Storage\Controller\ContactController', array($c->mailer))
