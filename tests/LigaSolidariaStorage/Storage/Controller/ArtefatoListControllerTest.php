@@ -40,7 +40,7 @@ class ArtefatoListControllerTest extends \PHPUnit_Framework_TestCase
         $class =
             'LigaSolidariaStorage\Storage\Controller\ArtefatoListController';
 
-        $instance = new ArtefatoListController();
+        $instance = new ArtefatoListController(sys_get_temp_dir());
 
         $this->assertInstanceOf($class, $instance);
         $this->assertTrue(class_exists($class), 'Class not found: ' . $class);
@@ -50,11 +50,11 @@ class ArtefatoListControllerTest extends \PHPUnit_Framework_TestCase
     {
         $_SERVER['REQUEST_URI'] = 'aaaaaaa.txt';
 
-        $instance = new ArtefatoListController();
+        $instance = new ArtefatoListController(sys_get_temp_dir());
 
-        $response = $instance->get('aaaaaaaa');
+        $response = $instance->get('aaaaaaa');
 
-        $this->assertSame('Pasta/arquivo não encontrado', $response);
+        $this->assertSame('Pasta/arquivo '.sys_get_temp_dir().'/'.$_SERVER['REQUEST_URI'].' não encontrado', $response);
     }
 
     /**
@@ -63,11 +63,11 @@ class ArtefatoListControllerTest extends \PHPUnit_Framework_TestCase
     public function testGetShouldWork()
     {
 
-        $_SERVER['REQUEST_URI'] = 'test_files';
+        $_SERVER['REQUEST_URI'] = '';
 
-        $instance = new ArtefatoListController();
+        $instance = new ArtefatoListController(sys_get_temp_dir());
 
-        $response = $instance->get('/test_files');
+        $response = $instance->get();
 
         $this->assertTrue(is_array($response));
     }

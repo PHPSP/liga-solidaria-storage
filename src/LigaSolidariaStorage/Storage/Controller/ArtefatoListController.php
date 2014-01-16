@@ -10,11 +10,18 @@ use Respect\Rest\Routable;
 */
 class ArtefatoListController implements Routable
 {
+    private $uploadDir; 
+
+    public function __construct($uploadDir)
+    {
+        $this->uploadDir = $uploadDir;
+    }
+
     public function get($path = null)
     {
         $pathWithExtension = "{$path}." .
             pathinfo($_SERVER['REQUEST_URI'], PATHINFO_EXTENSION);
-        $fullPath = UPLOAD_DIR . '/' . $pathWithExtension;
+        $fullPath = $this->uploadDir . '/' . $pathWithExtension;
 
         if (is_file($fullPath)) {
             header('Content-Disposition: attachment; filename="' . basename($fullPath) . '"');
@@ -28,7 +35,7 @@ class ArtefatoListController implements Routable
         }
 
         if (!is_dir($fullPath)) {
-            return 'Pasta/arquivo não encontrado';
+            return sprintf('Pasta/arquivo %s não encontrado', $fullPath);
         }
         $directory = new DirectoryIterator($fullPath);
 
